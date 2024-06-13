@@ -11,7 +11,7 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen)
     }
   return (
-    <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4 fixed top-0 w-full z-10 hover:shadow-md navbar backdrop-blur-md bg-opacity-75'>
+    <div className='max-w-full container mx-auto xl:px-24 px-4 fixed top-0 w-full z-10 hover:shadow-md bg-slate-100 drop-shadow-xl'>
       <nav className='flex justify-between items-center py-6 '>
         {/* <img src="\public\images\jij_logo.webp" className='size-[50px]' alt="" /> */}
       <a href="/" className='flex items-center text-2xl'>JOB PORTAL</a>

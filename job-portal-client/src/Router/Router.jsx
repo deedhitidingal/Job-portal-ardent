@@ -7,6 +7,7 @@ import SalaryPage from "../components/SalaryPage";
 
 import CurrentJobs from "../components/CurrentJobs";
 import PostJob from "../components/PostJob";
+import Application from "../components/Application";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         {
           path:"/post-job",
           element:<PostJob/>
+        },
+        {
+          path:"/apply",
+          element:<Application/>
         }
       ]
     },
