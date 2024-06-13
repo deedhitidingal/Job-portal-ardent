@@ -20,7 +20,7 @@ const Application = () => {
 
     return (
         <div className="bg-gray-200 p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4">Job Application</h2>
+            <h2 className="text-2xl font-bold mb-20">Job Application</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -150,17 +150,20 @@ const Application = () => {
                             id="cv"
                             accept=".pdf,.doc,.docx"
                             onChange={handleFileChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full  mb-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
                         />
                         {selectedFile && <p className="text-gray-600 text-sm mt-1">{selectedFile.name}</p>}
                     </div>
                 </div>
-                <button
+                <div className='flex justify-center'>
+                <button 
                     type="submit"
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none
+                    focus:shadow-outline"
+                    >
                     Apply Now
                 </button>
+                    </div>
             </form>
         </div>
     );
