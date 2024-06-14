@@ -3,6 +3,7 @@ import { useState } from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import { FaBarsStaggered } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
+import { useAuth } from '../store/Auth';
 
 
 const Navbar = () => {
@@ -10,11 +11,20 @@ const Navbar = () => {
     const handleIsMenuToggler=()=>{
         setIsMenuOpen(!isMenuOpen)
     }
+
+    const {user,isLoading,token}=useAuth()
+  if (token && isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  const {isLoggedIn}= useAuth()
   return (
     <div className='max-w-full container mx-auto xl:px-24 px-4 fixed top-0 w-full z-10 hover:shadow-md bg-slate-100 drop-shadow-xl'>
-      <nav className='flex justify-between items-center py-6 '>
-        {/* <img src="\public\images\jij_logo.webp" className='size-[50px]' alt="" /> */}
-      <a href="/" className='flex items-center text-2xl'>JOB PORTAL</a>
+      <nav className='flex justify-between items-center py-2 '>
+        <div className='flex space-x-2'>
+        <img src="\public\images\Logo.svg" className='size-[70px]' alt="" />
+      <a href="/" className='flex items-center text-2xl text-blue-500 font-semibold font-sans'>JOB FINDER</a>
+        </div>
         <ul className='hidden md:flex gap-12'>
           <NavLink to="/" ><li>Start a search</li></NavLink>
           <NavLink to="/current-jobs"><li>Current Jobs</li></NavLink>
@@ -23,8 +33,8 @@ const Navbar = () => {
         </ul>
 
         <div className='text-base font-medium space-x-5 hidden lg:block'>
-            <Link to="/" className='py-2 px-5 border rounded'>Log in</Link>
-            <Link to="/" className='py-2 px-5 border rounded text-white bg-blue-500'>Sign up</Link>
+              {isLoggedIn?<><Link to="/logout" className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link>
+            <Link to="/register" className='py-2 px-5 border rounded text-white bg-blue-500'>Register</Link></>}
         </div>
 
       {/*for mobile view*/}
@@ -43,8 +53,8 @@ const Navbar = () => {
           <NavLink to="/salary-estimate"><li className='py-1'>Salary Estimate</li></NavLink>
           <NavLink to="/post-job"><li>Post job</li></NavLink>
         <div className='flex py-4 gap-2'>
-          <li><Link to="/" className='py-2 px-5 border rounded'>Log in</Link></li>
-          <li><Link to="/" className='py-2 px-5 border rounded bg-blue-400'>Sign up</Link></li>
+          <li><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link></li>
+          <li><Link to="/register" className='py-2 px-5 border rounded bg-blue-400'>Sign up</Link></li>
         </div>
       </ul>
     </div>
