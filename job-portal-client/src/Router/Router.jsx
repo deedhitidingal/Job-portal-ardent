@@ -35,8 +35,8 @@ const router = createBrowserRouter([
           element:<Application/>
         },
         // {
-        //   path:"/details",
-        //   element:< Job_details/>
+        //   path:"/job-details",
+        //   element:<Job_details/>
         // }
       ]
     },
