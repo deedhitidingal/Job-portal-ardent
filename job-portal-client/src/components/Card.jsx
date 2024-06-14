@@ -22,6 +22,10 @@ const Card = ({data}) => {
             </div>
 
             <p className='text-base text-black/70  '>{description}</p>
+            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold  mt-10 py-2 px-4 rounded'>
+            Read more
+          </button>
+
          </div>
         </Link>
     </section>
