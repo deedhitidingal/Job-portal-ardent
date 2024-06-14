@@ -1,3 +1,4 @@
+
 import React from "react";
 import InputField from "../InputField";
 
@@ -14,6 +15,7 @@ const WorkExperience = ({ handleChange }) => {
             id="test4"
             value=""
             onChange={handleChange}
+            checked={true}
           />
           <span className="checkmark"></span>Any experience
         </label>
@@ -21,13 +23,13 @@ const WorkExperience = ({ handleChange }) => {
           handleChange={handleChange}
           value="Internship"
           title="Internship"
-          name="test"
+          name="test5"
         />
         <InputField
           handleChange={handleChange}
           value="Work remotely"
           title="Work remotely"
-          name="test"
+          name="test6"
         />
        
       </div>
