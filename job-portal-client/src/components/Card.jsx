@@ -22,6 +22,8 @@ const Card = ({data}) => {
             </div>
 
             <p className='text-base text-black/70  '>{description}</p>
+         
+
          </div>
         </Link>
     </section>
