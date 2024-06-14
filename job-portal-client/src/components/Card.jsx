@@ -8,7 +8,7 @@ const Card = ({data}) => {
 
   return (
     <section className='card shadow-lg rounded-md bg-white'>
-        <Link to={"/"} className='flex gap-4 flex-col sm:flex-row items-start'>
+        <Link to={"/details"} className='flex gap-4 flex-col sm:flex-row items-start'>
          <img src={companyLogo} alt="" className="w-[100px] h-[100px]"/>
          <div>
             <h4 className='mb-1'>{companyName}</h4>

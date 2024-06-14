@@ -35,7 +35,7 @@ const router = createBrowserRouter([
           element:<PostJob/>
         },
         {
-          path:"/job_details/apply",
+          path:"/details/apply",
           element:<Application/>
         },
         // {
@@ -53,6 +53,9 @@ const router = createBrowserRouter([
         {
           path:"/logout",
           element:<Logout/>
+        {
+          path:"/details",
+          element:< Job_details/>
         }
       ]
     },
