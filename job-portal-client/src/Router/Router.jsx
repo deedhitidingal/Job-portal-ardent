@@ -8,6 +8,9 @@ import SalaryPage from "../components/SalaryPage";
 import CurrentJobs from "../components/CurrentJobs";
 import PostJob from "../components/PostJob";
 import Application from "../components/Application";
+import Login from "../components/Login";
+import Register from "../components/Register";
+import Logout from "../components/Logout";
 import Job_details from "../components/Job_details";
 
 const router = createBrowserRouter([
@@ -35,10 +38,10 @@ const router = createBrowserRouter([
           path:"/job_details/apply",
           element:<Application/>
         },
-        {
-          path:"/job_details",
-          element:<Job_details/>
-        }
+        // {
+        //   path:"/details",
+        //   element:< Job_details/>
+        // }
       ]
     },
   ]);
