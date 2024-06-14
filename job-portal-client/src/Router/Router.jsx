@@ -11,6 +11,7 @@ import Application from "../components/Application";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Logout from "../components/Logout";
+import Job_details from "../components/Job_details";
 
 const router = createBrowserRouter([
     {
@@ -34,25 +35,13 @@ const router = createBrowserRouter([
           element:<PostJob/>
         },
         {
-          path:"/apply",
+          path:"/job_details/apply",
           element:<Application/>
         },
         // {
         //   path:"/details",
         //   element:< Job_details/>
         // }
-        {
-          path:"/login",
-          element:<Login/>
-        },
-        {
-          path:"/register",
-          element:<Register/>
-        },
-        {
-          path:"/logout",
-          element:<Logout/>
-        }
       ]
     },
   ]);
