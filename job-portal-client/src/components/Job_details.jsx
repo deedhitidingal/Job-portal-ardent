@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 function Job_details() {
   return (
     <div className="bg-white rounded-lg mt-20 h-screen shadow-md p-6">
-      <h2 className="text-xl font-bold mb-4">Machine Learning</h2>
-      <p className="text-gray-500 mb-4">AskMeOffers</p>
+      <h2 className="text-xl font-bold mb-4"> Web Development</h2>
+      <p className="text-gray-500 mb-4">Google</p>
       <div className="flex mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
           <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V11a2 2 0 00-2-2H5zM11 5a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2z" />
