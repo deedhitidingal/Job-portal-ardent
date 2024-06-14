@@ -93,4 +93,4 @@ function Job_details() {
   );
 }
 
-export default Internship;
+export default Job_details;
