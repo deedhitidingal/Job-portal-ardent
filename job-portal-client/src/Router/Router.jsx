@@ -35,13 +35,13 @@ const router = createBrowserRouter([
           element:<PostJob/>
         },
         {
-          path:"/job_details/apply",
+          path:"/details/apply",
           element:<Application/>
         },
-        // {
-        //   path:"/details",
-        //   element:< Job_details/>
-        // }
+        {
+          path:"/details",
+          element:< Job_details/>
+        }
       ]
     },
   ]);
