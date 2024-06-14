@@ -42,6 +42,18 @@ const router = createBrowserRouter([
         //   path:"/details",
         //   element:< Job_details/>
         // }
+        {
+          path:"/login",
+          element:<Login/>
+        },
+        {
+          path:"/register",
+          element:<Register/>
+        },
+        {
+          path:"/logout",
+          element:<Logout/>
+        }
       ]
     },
   ]);
