@@ -53,6 +53,7 @@ const router = createBrowserRouter([
         {
           path:"/logout",
           element:<Logout/>
+        },
         {
           path:"/details",
           element:< Job_details/>
