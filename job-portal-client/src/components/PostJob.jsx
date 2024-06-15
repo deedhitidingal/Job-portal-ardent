@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {useNavigate} from "react-router-dom"
 import CreatableSelect from "react-select/creatable";
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const PostJob = () => {
   const [selectedOption, setselectedOption] = useState(null);
@@ -32,6 +32,11 @@ const PostJob = () => {
     console.log(result);
     if(result.acknowledged){
         navigate("/")
+    }
+    
+    if(response.ok){
+      console.log("Job posted Successfully");
+      toast.success("Job posted Successfully");
     }
   } catch (error) {
     console.error(error);
