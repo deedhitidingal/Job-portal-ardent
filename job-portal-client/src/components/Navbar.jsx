@@ -53,8 +53,10 @@ const Navbar = () => {
           <NavLink to="/salary-estimate"><li className='py-1'>Salary Estimate</li></NavLink>
           <NavLink to="/post-job"><li>Post job</li></NavLink>
         <div className='flex py-4 gap-2'>
+        {isLoggedIn?<><Link to="/logout" className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<>
           <li><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link></li>
           <li><Link to="/register" className='py-2 px-5 border rounded bg-blue-400'>Sign up</Link></li>
+        </>}
         </div>
       </ul>
     </div>
