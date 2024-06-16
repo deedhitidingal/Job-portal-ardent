@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+const { ObjectId } = require('mongodb'); 
 
 const jobsCollection = mongoose.connection.collection('postedJobs');
 
@@ -17,4 +18,13 @@ const postJobs=async(req,res)=>{
         return res.status(404).json({msg:"can't insert data please try again"})
     }
 }
-module.exports={getAllJobs,postJobs}
+
+const getJobById= async(req,res,next)=>{
+    const id=req.params.id;
+    const job = await jobsCollection.findOne({
+        _id: new ObjectId(id)
+    })
+
+    res.send(job);
+}
+module.exports={getAllJobs,postJobs,getJobById}
