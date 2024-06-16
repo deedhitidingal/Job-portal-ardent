@@ -57,7 +57,7 @@ const router = createBrowserRouter([
           element:<Logout/>
         },
         {
-          path:"/details",
+          path:"/jobdetails/:id",
           element:< Job_details/>
         },
         {
