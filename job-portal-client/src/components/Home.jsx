@@ -1,3 +1,6 @@
+
+
+
 import React, { useState, useEffect } from "react";
 import Banner from "./Banner";
 import Card from "./Card";
@@ -6,74 +9,75 @@ import LeftSideBar from "./sidebars/LeftSideBar";
 import RightSideBar from "./sidebars/RightSideBar";
 
 const Home = () => {
-  const [selectedCatagory, setselectedCatagory] = useState(null);
-  const [jobs, setjobs] = useState([]);
-  const [query, setquery] = useState("");
-  const [isLoading, setisLoading] = useState(true);
-  const [currentPage, setcurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [jobs, setJobs] = useState([]);
+  const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
   const fetchData = async () => {
-    let data = await fetch("http://127.0.0.5:3000/api/jobs/");
-    let response = await data.json();
-    console.log(response);
-    setjobs(response);
+    try {
+      let data = await fetch("http://127.0.0.5:3000/api/jobs/");
+      let response = await data.json();
+      setJobs(response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    setisLoading(true);
+    setIsLoading(true);
     fetchData();
-    setisLoading(false);
   }, []);
 
   const handleInputChange = (event) => {
-    setquery(event.target.value);
+    setQuery(event.target.value);
   };
 
-  //filet jobs by title
+  const handleLocationChange = (location) => {
+    setSelectedCategory(location);
+  };
+
   const filteredItems = jobs.filter(
-    (job) => job.jobTitle.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    (job) => job.jobTitle.toLowerCase().includes(query.toLowerCase())
   );
 
-  //Radio filtering
   const handleChange = (event) => {
-    setselectedCatagory(event.target.value);
+    setSelectedCategory(event.target.value);
   };
 
-  //button based filtering
   const handleClick = (event) => {
-    setselectedCatagory(event.target.value);
+    setSelectedCategory(event.target.value);
   };
 
-  //calculate the index range
   const calculatePageRange = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return { startIndex, endIndex };
   };
-  //fn for next page
+
   const nextPage = () => {
     if (currentPage < Math.ceil(filteredItems.length / itemsPerPage)) {
-      setcurrentPage(currentPage + 1);
+      setCurrentPage(currentPage + 1);
     }
   };
 
-  //fn for previous page
   const previousPage = () => {
     if (currentPage > 1) {
-      setcurrentPage(currentPage - 1);
+      setCurrentPage(currentPage - 1);
     }
   };
-  //main function
+
   const filteredData = (jobs, selected, query) => {
     let filteredJobs = jobs;
 
-    //filtering input items
     if (query) {
       filteredJobs = filteredItems;
     }
 
-    //catagory filtering
     if (selected) {
       filteredJobs = filteredJobs.filter(
         ({
@@ -88,29 +92,27 @@ const Home = () => {
           parseInt(maxPrice) <= parseInt(selected) ||
           postingDate >= selected ||
           salaryType.toLowerCase() === selected.toLowerCase() ||
-          experienceLevel.toLowerCase()===selected.toLowerCase()||
-          employmentType.toLowerCase() === selected.toLowerCase() 
+          experienceLevel.toLowerCase() === selected.toLowerCase() ||
+          employmentType.toLowerCase() === selected.toLowerCase()
       );
-      console.log(filteredJobs);
     }
-    //slice the data based on current page
+
     const { startIndex, endIndex } = calculatePageRange();
     filteredJobs = filteredJobs.slice(startIndex, endIndex);
     return filteredJobs.map((data, i) => <Card key={i} data={data} />);
   };
 
-  const result = filteredData(jobs, selectedCatagory, query);
+  const result = filteredData(jobs, selectedCategory, query);
+
   return (
     <div>
-      <Banner query={query} handleInputChange={handleInputChange} />
+      <Banner query={query} handleInputChange={handleInputChange} handleLocationChange={handleLocationChange} />
 
       <div className="bg-gradient-to-r from-[#ffffff] to-[#d4dfed] md:grid grid-cols-4 gap-8 lg:px-24 px-4 py-12">
-        {/*  left side filters */}
         <div className="bg-white p-4 rounded shadow-md">
           <LeftSideBar handleChange={handleChange} handleClick={handleClick} />
         </div>
 
-        {/* job cards */}
         <div className="col-span-2  p-4 rounded-sm">
           {isLoading ? (
             <p className="font-medium">Loading...</p>
@@ -122,8 +124,8 @@ const Home = () => {
               <p>No data found</p>
             </>
           )}
-          {/* pagination here */}
-          {result.length > 0 ? (
+
+          {result.length > 0 && (
             <div className="flex justify-center mt-4 space-x-8">
               <button onClick={previousPage} className="hover:underline">
                 Previous
@@ -142,12 +144,12 @@ const Home = () => {
                 Next
               </button>
             </div>
-          ) : (
-            ""
           )}
         </div>
-        {/* right side  */}
-        <div className="bg-white p-4 rounded shadow-md"><RightSideBar/></div>
+
+        <div className="bg-white p-4 rounded shadow-md">
+          <RightSideBar />
+        </div>
       </div>
     </div>
   );
