@@ -12,6 +12,8 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import Logout from "../components/Logout";
 import Job_details from "../components/Job_details";
+import Registercard from "../components/Registercard";
+import HirerRegister from "../components/HirerRegister";
 import User_dash from "../components/User_dash";
 
 const router = createBrowserRouter([
@@ -39,9 +41,33 @@ const router = createBrowserRouter([
           path:"/details/apply",
           element:<Application/>
         },
+        // {
+        //   path:"/details",
+        //   element:< Job_details/>
+        // }
         {
-          path:"/details",
+          path:"/login",
+          element:<Login/>
+        },
+        {
+          path:"/register",
+          element:<Register/>
+        },
+        {
+          path:"/logout",
+          element:<Logout/>
+        },
+        {
+          path:"/jobdetails/:id",
           element:< Job_details/>
+        },
+        {
+          path:"/registercard",
+          element:<Registercard/>
+        },
+        {
+          path:"/hirerregister",
+          element:<HirerRegister/>
         },
         {
           path:"/userdash",
