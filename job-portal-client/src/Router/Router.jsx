@@ -14,6 +14,7 @@ import Logout from "../components/Logout";
 import Job_details from "../components/Job_details";
 import Registercard from "../components/Registercard";
 import HirerRegister from "../components/HirerRegister";
+import User_dash from "../components/User_dash";
 import HirereDetails from "../components/HirereDetails";
 
 const router = createBrowserRouter([
@@ -72,8 +73,14 @@ const router = createBrowserRouter([
         {
           path:"/hirerdetails",
           element:<HirereDetails/>
+        },
+        {
+          path:"/userdash",
+          element:< User_dash/>
         }
+        
       ]
+      
     },
   ]);
 
