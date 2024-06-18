@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 
 const HirereDetails = () => {
@@ -137,12 +138,12 @@ const HirereDetails = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <button
+            <Link to="/admin"><button
               type="submit"
               className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Submit
-            </button>
+            </button></Link>
           </div>
         </form>
       </div>
