@@ -1,0 +1,260 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": ["hello", "hi", "hey", "good morning", "good evening"],
+        "responses": ["Hello! How can I assist you with your job search today?"]
+      },
+      {
+        "tag": "goodbye",
+        "patterns": ["bye", "goodbye", "see you later"],
+        "responses": ["Goodbye! Best of luck with your job search."]
+      },
+      {
+        "tag": "job_search",
+        "patterns": ["I'm looking for a job", "I need a job", "job search"],
+        "responses": ["Sure, I can help with that. What type of job are you looking for?"]
+      },
+      {
+        "tag": "job_application",
+        "patterns": ["how to apply", "application process", "apply for a job"],
+        "responses": ["To apply for a job, please visit our job listings page and follow the application instructions for each listing."]
+      },
+      {
+        "tag": "job_types",
+        "patterns": ["What types of jobs are available?", "List job types", "Types of jobs"],
+        "responses": ["We offer a variety of job types including full-time, part-time, contract, temporary, and internships."]
+      },
+      {
+        "tag": "location",
+        "patterns": ["Do you have jobs in [location]?", "Jobs in [location]", "Looking for jobs in [location]"],
+        "responses": ["Yes, we have jobs available in various locations. Please specify the location you're interested in."]
+      },
+      {
+        "tag": "benefits",
+        "patterns": ["What benefits do you offer?", "Job benefits", "Employee benefits"],
+        "responses": ["Our jobs offer a range of benefits including health insurance, retirement plans, paid time off, and professional development opportunities."]
+      },
+      {
+        "tag": "salary",
+        "patterns": ["What is the salary range?", "Salary details", "Pay scale"],
+        "responses": ["Salary ranges vary depending on the position and experience level. Please check the job listing for specific salary details."]
+      },
+      {
+        "tag": "interview_process",
+        "patterns": ["What is the interview process?", "Interview steps", "Interview procedure"],
+        "responses": ["Our interview process typically involves an initial phone screen, followed by one or more in-person or virtual interviews, and finally a job offer if selected."]
+      },
+      {
+        "tag": "resume_help",
+        "patterns": ["Can you help with my resume?", "Resume assistance", "How to improve my resume"],
+        "responses": ["Yes, we offer resume writing tips and services to help you create a strong resume. Please visit our resume assistance page for more information."]
+      },
+      {
+        "tag": "job_alerts",
+        "patterns": ["How can I get job alerts?", "Job notifications", "Sign up for job alerts"],
+        "responses": ["You can sign up for job alerts by creating an account on our website and setting your job preferences. You'll receive email notifications when matching jobs are posted."]
+      },
+      {
+        "tag": "company_info",
+        "patterns": ["Tell me about the company", "Company details", "About the company"],
+        "responses": ["We are a leading job portal dedicated to connecting job seekers with top employers. Our mission is to provide a seamless job search experience and help you find your dream job."]
+      },
+      {
+        "tag": "contact_info",
+        "patterns": ["How can I contact you?", "Contact details", "Customer support"],
+        "responses": ["You can contact our customer support team via email at support@jobportal.com or call us at 1-800-123-4567. We're here to help!"]
+      },
+      {
+        "tag": "job_recommendations",
+        "patterns": ["Can you recommend a job?", "Recommend a job", "Job recommendations"],
+        "responses": ["Sure, I can recommend jobs based on your profile and preferences. Please provide more details about your skills and interests."]
+      },
+      {
+        "tag": "application_status",
+        "patterns": ["What is the status of my application?", "Check application status", "Application status"],
+        "responses": ["You can check the status of your application by logging into your account on our website and visiting the 'My Applications' section."]
+      },
+      {
+        "tag": "account_creation",
+        "patterns": ["How do I create an account?", "Create an account", "Sign up"],
+        "responses": ["To create an account, please visit our registration page and fill out the required information. You'll be able to search and apply for jobs once your account is set up."]
+      },
+      {
+        "tag": "forgot_password",
+        "patterns": ["I forgot my password", "Reset password", "Forgot password"],
+        "responses": ["If you forgot your password, please visit the 'Forgot Password' page and follow the instructions to reset it."]
+      },
+      {
+        "tag": "profile_update",
+        "patterns": ["How can I update my profile?", "Update profile", "Edit profile"],
+        "responses": ["To update your profile, log in to your account and go to the 'Profile' section where you can edit your personal information, resume, and preferences."]
+      },
+      {
+        "tag": "training_programs",
+        "patterns": ["Do you offer training programs?", "Training programs", "Skill development"],
+        "responses": ["Yes, we offer various training programs to help you develop new skills and enhance your career. Please visit our training page for more information."]
+      },
+      {
+        "tag": "internship_opportunities",
+        "patterns": ["Are there internship opportunities?", "Internships", "Looking for internships"],
+        "responses": ["Yes, we have a range of internship opportunities available. Please visit our internships page to view the latest openings."]
+      },
+      {
+        "tag": "remote_jobs",
+        "patterns": ["Do you have remote jobs?", "Remote work", "Work from home jobs"],
+        "responses": ["Yes, we offer a variety of remote job opportunities. Please visit our remote jobs page to explore the available positions."]
+      },
+      {
+        "tag": "part_time_jobs",
+        "patterns": ["Do you have part-time jobs?", "Part-time work", "Looking for part-time jobs"],
+        "responses": ["Yes, we have part-time job opportunities available. Please visit our part-time jobs page to view the latest openings."]
+      },
+      {
+        "tag": "full_time_jobs",
+        "patterns": ["Do you have full-time jobs?", "Full-time work", "Looking for full-time jobs"],
+        "responses": ["Yes, we offer a variety of full-time job opportunities. Please visit our full-time jobs page to explore the available positions."]
+      },
+      {
+        "tag": "cover_letter_help",
+        "patterns": ["Can you help with my cover letter?", "Cover letter assistance", "How to write a cover letter"],
+        "responses": ["Yes, we provide tips and templates to help you write a strong cover letter. Please visit our cover letter assistance page for more details."]
+      },
+      {
+        "tag": "networking_tips",
+        "patterns": ["Do you have networking tips?", "Networking advice", "How to network"],
+        "responses": ["Networking is key to a successful job search. We offer various tips and strategies to help you build your professional network. Check out our networking tips page for more information."]
+      },
+      {
+        "tag": "interview_preparation",
+        "patterns": ["How can I prepare for an interview?", "Interview preparation", "Interview tips"],
+        "responses": ["Preparing for an interview is crucial. We offer resources and tips to help you succeed in your interviews. Please visit our interview preparation page for more information."]
+      },
+      {
+        "tag": "career_advice",
+        "patterns": ["Can I get career advice?", "Career tips", "Career guidance"],
+        "responses": ["Yes, we offer comprehensive career advice to help you make informed decisions about your career path. Please visit our career advice page for more details."]
+      },
+      {
+        "tag": "job_market_trends",
+        "patterns": ["What are the current job market trends?", "Job market trends", "Industry trends"],
+        "responses": ["Staying updated with job market trends is important. We provide the latest insights and analysis on the job market. Please visit our job market trends page for more information."]
+      },
+      {
+        "tag": "company_reviews",
+        "patterns": ["Can I read company reviews?", "Company reviews", "Employer reviews"],
+        "responses": ["Yes, you can read reviews from current and former employees about various companies. Please visit our company reviews page to learn more."]
+      },
+      {
+        "tag": "skill_assessment",
+        "patterns": ["Do you offer skill assessments?", "Skill tests", "Skill evaluations"],
+        "responses": ["Yes, we offer various skill assessments to help you identify your strengths and areas for improvement. Please visit our skill assessment page for more information."]
+      },
+      {
+        "tag": "certification_courses",
+        "patterns": ["Do you offer certification courses?", "Certification programs", "Professional certifications"],
+        "responses": ["Yes, we offer a variety of certification courses to help you advance your career. Please visit our certification courses page for more details."]
+      },
+      {
+        "tag": "volunteer_opportunities",
+        "patterns": ["Are there volunteer opportunities?", "Volunteer work", "Looking for volunteer opportunities"],
+        "responses": ["Yes, we list various volunteer opportunities that can help you gain experience and give back to the community. Please visit our volunteer opportunities page for more information."]
+      },
+      {
+        "tag": "relocation_assistance",
+        "patterns": ["Do you offer relocation assistance?", "Relocation help", "Moving for a job"],
+        "responses": ["Some of our job listings offer relocation assistance. Please check the job details or contact the employer for more information."]
+      },
+      {
+        "tag": "job_fairs",
+        "patterns": ["Are there upcoming job fairs?", "Job fair events", "Career fairs"],
+        "responses": ["We regularly host job fairs where you can meet potential employers and learn about job opportunities. Please visit our job fairs page for upcoming events."]
+      },
+      {
+        "tag": "work_life_balance",
+        "patterns": ["Do you have tips for work-life balance?", "Work-life balance advice", "Balancing work and life"],
+        "responses": ["Maintaining a healthy work-life balance is important. We offer tips and resources to help you achieve this. Please visit our work-life balance page for more information."]
+      },
+      {
+        "tag": "industry_specific_jobs",
+        "patterns": ["Do you have jobs in [industry]?", "Industry-specific jobs", "Jobs in [industry]"],
+        "responses": ["Yes, we offer job listings in various industries. Please specify the industry you're interested in."]
+      },
+      {
+        "tag": "company_culture",
+        "patterns": ["Tell me about the company culture", "Company culture", "Work environment"],
+        "responses": ["Our company values a positive and inclusive work environment. We prioritize employee well-being, collaboration, and continuous learning."]
+      },
+      {
+        "tag": "job_follow_up",
+        "patterns": ["How do I follow up on my application?", "Follow up on job application", "Checking in on my application"],
+        "responses": ["You can follow up on your application by contacting the HR department of the company. Alternatively, you can check your application status on our website."]
+      },
+      {
+        "tag": "resume_formatting",
+        "patterns": ["What is the best resume format?", "Resume formatting tips", "How to format my resume"],
+        "responses": ["A clear and concise resume format is best. Use bullet points, highlight key achievements, and keep it to one or two pages. Visit our resume formatting page for more tips."]
+      },
+      {
+        "tag": "interview_questions",
+        "patterns": ["What are common interview questions?", "Interview questions", "Questions to expect in an interview"],
+        "responses": ["Common interview questions include 'Tell me about yourself', 'Why do you want to work here?', and 'What are your strengths and weaknesses?'. Visit our interview questions page for more."]
+      },
+      {
+        "tag": "interview_follow_up",
+        "patterns": ["How do I follow up after an interview?", "Follow up after interview", "Post-interview follow up"],
+        "responses": ["Send a thank-you email within 24 hours of the interview, reiterating your interest in the position and mentioning something specific discussed in the interview."]
+      },
+      {
+        "tag": "job_shadowing",
+        "patterns": ["Do you offer job shadowing opportunities?", "Job shadowing", "Shadowing professionals"],
+        "responses": ["Yes, we offer job shadowing opportunities to help you gain insights into different roles. Please visit our job shadowing page for more information."]
+      },
+      {
+        "tag": "salary_negotiation",
+        "patterns": ["How do I negotiate my salary?", "Salary negotiation tips", "Negotiating pay"],
+        "responses": ["Research industry standards, highlight your skills and experience, and be prepared to discuss your salary expectations. Visit our salary negotiation page for more tips."]
+      },
+      {
+        "tag": "workplace_diversity",
+        "patterns": ["What is the company's stance on diversity?", "Workplace diversity", "Diversity policies"],
+        "responses": ["We are committed to fostering a diverse and inclusive workplace. Our diversity policies aim to create an environment where all employees feel valued and respected."]
+      },
+      {
+        "tag": "employee_testimonials",
+        "patterns": ["Can I read employee testimonials?", "Employee reviews", "Staff experiences"],
+        "responses": ["Yes, you can read testimonials from our current and former employees on our employee testimonials page."]
+      },
+      {
+        "tag": "promotion_opportunities",
+        "patterns": ["Are there opportunities for promotion?", "Promotion opportunities", "Career advancement"],
+        "responses": ["We offer various career advancement opportunities through internal promotions, professional development programs, and performance-based evaluations."]
+      },
+      {
+        "tag": "freelance_jobs",
+        "patterns": ["Do you have freelance jobs?", "Freelance work", "Looking for freelance jobs"],
+        "responses": ["Yes, we offer freelance job opportunities across various fields. Please visit our freelance jobs page to explore the available positions."]
+      },
+      {
+        "tag": "gig_jobs",
+        "patterns": ["Do you have gig jobs?", "Gig work", "Looking for gig jobs"],
+        "responses": ["Yes, we offer gig job opportunities in different industries. Please visit our gig jobs page to view the latest openings."]
+      },
+      {
+        "tag": "employment_agencies",
+        "patterns": ["Can you connect me with employment agencies?", "Employment agencies", "Staffing agencies"],
+        "responses": ["Yes, we work with various employment and staffing agencies to help you find the right job. Please visit our employment agencies page for more details."]
+      },
+      {
+        "tag": "interview_attire",
+        "patterns": ["What should I wear to an interview?", "Interview attire", "How to dress for an interview"],
+        "responses": ["Dress professionally and appropriately for the job you're applying for. Business casual or formal attire is generally recommended. Visit our interview attire page for more tips."]
+      },
+      {
+        "tag": "job_relocation",
+        "patterns": ["What should I consider when relocating for a job?", "Job relocation tips", "Moving for a job advice"],
+        "responses": ["Consider the cost of living, lifestyle changes, and relocation expenses. Visit our job relocation page for more tips and resources."]
+      }
+    ]
+  }
+  

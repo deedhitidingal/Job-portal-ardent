@@ -16,6 +16,7 @@ import Registercard from "../components/Registercard";
 import HirerRegister from "../components/HirerRegister";
 import User_dash from "../components/User_dash";
 import HirereDetails from "../components/HirereDetails";
+import Chat from "../components/Chat";
 
 const router = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
         {
           path:"/userdash",
           element:< User_dash/>
+        },
+        {
+          path:"/chatbot",
+          element:< Chat/>
         }
         
       ]

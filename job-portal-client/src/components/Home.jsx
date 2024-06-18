@@ -7,6 +7,8 @@ import Card from "./Card";
 import Jobs from "./Jobs";
 import LeftSideBar from "./sidebars/LeftSideBar";
 import RightSideBar from "./sidebars/RightSideBar";
+import { TbMessageChatbot } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -150,6 +152,14 @@ const Home = () => {
         <div className="bg-white p-4 rounded shadow-md">
           <RightSideBar />
         </div>
+        <Link to= "chatbot">
+        <div className="fixed bottom-4 right-4">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded">
+      <TbMessageChatbot  className="text-3xl"/>
+
+      </button>
+    </div>
+        </Link>
       </div>
     </div>
   );
