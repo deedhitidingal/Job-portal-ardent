@@ -273,7 +273,7 @@ const navigate= useNavigate();
                         <input
                           type="text"
                           name="username"
-                          placeholder="Ex: Rohan roy"
+                          placeholder="XYZ"
                           id="username"
                           required
                           autoComplete="off"
@@ -294,7 +294,7 @@ const navigate= useNavigate();
                       <input
                         type="email"
                         name="email"
-                        placeholder="Ex: rohan123@gmail.com"
+                        placeholder="Ex: XYZCOMPANY@gmail.com"
                         id="email"
                         required
                         autoComplete="off"

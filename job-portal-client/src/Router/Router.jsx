@@ -4,7 +4,6 @@ import {
 import App from "../App";
 import Home from "../components/Home";
 import SalaryPage from "../components/SalaryPage";
-
 import CurrentJobs from "../components/CurrentJobs";
 import PostJob from "../components/PostJob";
 import Application from "../components/Application";
@@ -16,6 +15,10 @@ import Registercard from "../components/Registercard";
 import HirerRegister from "../components/HirerRegister";
 import User_dash from "../components/User_dash";
 import HirereDetails from "../components/HirereDetails";
+import Chat from "../components/Chat";
+import AdminHome from "../components/Admin/AdminHome";
+import AdminUsers from "../components/Admin/AdminUsers";
+
 
 const router = createBrowserRouter([
     {
@@ -34,10 +37,7 @@ const router = createBrowserRouter([
           path:"/current-jobs",
           element:<CurrentJobs/>
         },
-        {
-          path:"/post-job",
-          element:<PostJob/>
-        },
+       
         {
           path:"/details/apply",
           element:<Application/>
@@ -77,7 +77,26 @@ const router = createBrowserRouter([
         {
           path:"/userdash",
           element:< User_dash/>
+        },
+        {
+          path:"/chatbot",
+          element:< Chat/>
         }
+
+          path:'/admin',
+          element:<AdminHome/>,
+          children:[
+              {
+                  path:'users',
+                  element:<AdminUsers/>,
+              },
+              {
+                index: true, // This will render DefaultAdminPage when path is exactly /admin
+                element: <PostJob/>, 
+              },
+          ]
+      },
+
         
       ]
       

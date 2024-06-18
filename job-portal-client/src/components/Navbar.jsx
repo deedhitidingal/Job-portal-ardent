@@ -26,11 +26,20 @@ const Navbar = () => {
       <a href="/" className='flex items-center text-2xl text-blue-500 font-semibold font-sans'>JOB FINDER</a>
         </div>
         <ul className='hidden md:flex gap-12'>
-          <NavLink to="/" ><li>Start a search</li></NavLink>
-          <NavLink to="/current-jobs"><li>Current Jobs</li></NavLink>
-          <NavLink to="/salary-estimate"><li>Salary Estimate</li></NavLink>
-          <NavLink to="/post-job"><li>Post job</li></NavLink>
-        </ul>
+  <NavLink to="/"><li>Start a search</li></NavLink>
+  <NavLink to="/current-jobs"><li>Current Jobs</li></NavLink>
+  <NavLink to="/salary-estimate"><li>Salary Estimate</li></NavLink>
+  {/* <NavLink to="/post-job"><li>Post job</li></NavLink> */}
+  {user?.isAdmin ? (
+    <NavLink className={(e) => e.isActive ? "red" : ""} to="/admin">
+      <li className='p-[20px]'>Company Dashboard</li>
+    </NavLink>
+  ) : (
+    <NavLink className={(e) => e.isActive ? "red" : ""} to="/userdash">
+      <li className='p-[20px]'>MY Dashboard</li>
+    </NavLink>
+  )}
+</ul>
 
         <div className='text-base font-medium space-x-5 hidden lg:block'>
               {isLoggedIn?<><Link to="/logout" className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link>
@@ -51,7 +60,10 @@ const Navbar = () => {
       <NavLink to="/" ><li className='py-1'>Home</li></NavLink>
           <NavLink to="/current-jobs"><li className='py-1'>Current Jobs</li></NavLink>
           <NavLink to="/salary-estimate"><li className='py-1'>Salary Estimate</li></NavLink>
-          <NavLink to="/post-job"><li>Post job</li></NavLink>
+          {/* <NavLink to="/post-job"><li>Post job</li></NavLink> */}
+          {user?.isAdmin && (
+              <NavLink className={(e) => e.isActive ? "red" : ""} to="/admin"><li className='p-[20px]'>Company Dashboard</li></NavLink>
+            )}
         <div className='flex py-4 gap-2'>
         {isLoggedIn?<><Link to="/logout" className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<>
           <li><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link></li>
