@@ -26,12 +26,12 @@ app.use("/api/jobs",jobRoute);
 app.use(errorMiddleware);
 
 
-const PORT= 3000;
-const hostname="127.0.0.5";
+const PORT=process.env.PORT || 3000;
+
 
 connectDb().then(()=>{
-    app.listen(PORT,hostname,()=>{
-        console.log(`Server is running at http://${hostname}:${PORT}/`);
+    app.listen(PORT,()=>{
+        console.log(`Server is running at port :${PORT}`);
     });
 
 });
