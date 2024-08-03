@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from '../store/Auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { BASE_URL } from '../store/Helper';
 
 const Login = () => {
   const [user, setuser] = useState({
@@ -33,7 +34,7 @@ const {storeTokenInLs}=useAuth();
     console.log(user);
 
     try {
-      const loginURL= "http://127.0.0.5:3000/api/auth/login";
+      const loginURL= `${BASE_URL}/api/auth/login`;
       const response=await fetch(loginURL,{
         method:"POST",
         headers:{

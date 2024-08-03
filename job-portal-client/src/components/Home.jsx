@@ -9,6 +9,7 @@ import LeftSideBar from "./sidebars/LeftSideBar";
 import RightSideBar from "./sidebars/RightSideBar";
 import { TbMessageChatbot } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../store/Helper";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -20,7 +21,7 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      let data = await fetch("http://127.0.0.5:3000/api/jobs/");
+      let data = await fetch(`${BASE_URL}/api/jobs/`);
       let response = await data.json();
       setJobs(response);
     } catch (error) {

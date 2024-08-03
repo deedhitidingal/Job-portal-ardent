@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../store/Auth";
 import {Link, Outlet} from "react-router-dom";
+import { BASE_URL } from "../../store/Helper";
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const { UserAuthorization } = useAuth();
   const fetchData = async () => {
-    const URL = "http://127.0.0.5:3000/api/admin/users";
+    const URL = `${BASE_URL}/api/admin/users`;
     const response = await fetch(URL, {
       method: "GET",
       headers: {
@@ -35,7 +36,7 @@ const AdminUsers = () => {
 //   }
   const handleClick= async(id)=>{
     try {
-        const URL = `http://127.0.0.5:3000/api/admin/users/${id}`;
+        const URL = `${BASE_URL}/api/admin/users/${id}`;
         const response = await fetch(URL, {
           method: "DELETE",
           headers: {
