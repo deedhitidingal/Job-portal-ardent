@@ -25,12 +25,11 @@ const options = {
 try {
 	const response = await fetch(url, options);
 	const result = await response.json();
-	// console.log(result);
+	console.log(result);
 
   const jobTitles = result.data.map(job => job.job_title); // Extract job titles
   // console.log(jobTitles)
 
-  console.log(result.data)
   setjobs(result.data);
 } catch (error) {
 	console.error(error);
