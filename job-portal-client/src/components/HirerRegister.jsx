@@ -179,6 +179,7 @@ import { useAuth } from "../store/Auth";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { FaEye ,FaEyeSlash } from "react-icons/fa";
+import { BASE_URL } from '../store/Helper';
 
 
 const HirerRegister = () => {
@@ -212,7 +213,7 @@ const navigate= useNavigate();
     console.log(user);
 
     try {
-      const registerURL = "http://127.0.0.5:3000/api/auth/register";
+      const registerURL = `${BASE_URL}/api/auth/register`;
       const response = await fetch(registerURL, {
         method: "POST",
         headers: {

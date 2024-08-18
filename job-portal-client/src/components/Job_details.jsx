@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { BASE_URL } from '../store/Helper';
 
 function Job_details() {
   const { id } = useParams();
@@ -8,11 +9,11 @@ function Job_details() {
   const [company, setCompany] = useState({});
 
   useEffect(() => {
-    fetch(`http://127.0.0.5:3000/api/jobs/job/${id}`)
+    fetch(`${BASE_URL}/api/jobs/job/${id}`)
       .then(res => res.json())
       .then(data => {
         setJob(data);
-        fetch(`http://127.0.0.5:3000/api/companies/${data.companyId}`) // Assuming an endpoint to fetch company details
+        fetch(`${BASE_URL}/api/companies/${data.companyId}`) // Assuming an endpoint to fetch company details
           .then(res => res.json())
           .then(companyData => setCompany(companyData))
           .catch(error => console.error('Error fetching company details:', error));

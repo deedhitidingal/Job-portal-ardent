@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import {useNavigate} from "react-router-dom"
 import CreatableSelect from "react-select/creatable";
 import { ToastContainer, toast } from 'react-toastify';
+import { BASE_URL } from "../store/Helper";
 
 const PostJob = () => {
   const [selectedOption, setselectedOption] = useState(null);
@@ -17,7 +18,7 @@ const PostJob = () => {
   const navigate= useNavigate();
   //for posting the job to database
   const fetchData= async(data)=>{
-    const url = 'http://127.0.0.5:3000/api/jobs/addJob';
+    const url = `${BASE_URL}/api/jobs/addJob`;
   const options = {
     method: 'POST',
     headers: {

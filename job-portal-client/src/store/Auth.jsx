@@ -1,4 +1,5 @@
 import { createContext, useContext,useState,useEffect } from "react";
+import { BASE_URL } from "./Helper";
 
 export const AuthContext=createContext();
 
@@ -31,7 +32,7 @@ export const AuthProvider=({children})=>{
           }
         try {
             setisLoading(true)
-            const response= await fetch("http://127.0.0.5:3000/api/auth/user",{
+            const response= await fetch(`${BASE_URL}/api/auth/user`,{
                 method:"GET",
                 headers:{
                     Authorization: UserAuthorization,

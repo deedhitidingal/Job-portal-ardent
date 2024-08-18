@@ -81,8 +81,8 @@ const router = createBrowserRouter([
         {
           path:"/chatbot",
           element:< Chat/>
-        }
-
+        },
+        {
           path:'/admin',
           element:<AdminHome/>,
           children:[
@@ -96,11 +96,8 @@ const router = createBrowserRouter([
               },
           ]
       },
-
-        
-      ]
-      
-    },
-  ]);
+    ]
+    } 
+      ]);
 
   export default router;

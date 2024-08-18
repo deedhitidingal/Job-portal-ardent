@@ -32,11 +32,11 @@ const Navbar = () => {
   {/* <NavLink to="/post-job"><li>Post job</li></NavLink> */}
   {user?.isAdmin ? (
     <NavLink className={(e) => e.isActive ? "red" : ""} to="/admin">
-      <li className='p-[20px]'>Company Dashboard</li>
+      <li className=''>Company Dashboard</li>
     </NavLink>
   ) : (
     <NavLink className={(e) => e.isActive ? "red" : ""} to="/userdash">
-      <li className='p-[20px]'>MY Dashboard</li>
+      <li className=''>MY Dashboard</li>
     </NavLink>
   )}
 </ul>
