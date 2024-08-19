@@ -14,8 +14,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle ,faGithub} from "@fortawesome/free-brands-svg-icons";
 
 const Register = () => {
-  const [user, setuser] = useState({
-    username: "",
+  const [User, setUser] = useState({
+    Username: "",
     email: "",
     phone: "",
     password: "",
@@ -23,16 +23,16 @@ const Register = () => {
 
   const [visible, setvisible] = useState(false);
 
-  const { User, loginWithRedirect, isAuthenticated, logout } = useAuth0();
-  console.log("Current User", User);
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  console.log("Current User", user);
 
   const handleInput = (e) => {
     console.log(e);
     let name = e.target.name;
     let value = e.target.value;
 
-    setuser({
-      ...user,
+    setUser({
+      ...User,
       [name]: value,
     });
   };
@@ -44,7 +44,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    console.log(User);
 
     try {
       const registerURL = `${BASE_URL}/api/auth/register`;
@@ -53,7 +53,7 @@ const Register = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(User),
       });
       const res_data = await response.json();
       console.log("response data", res_data);
@@ -98,21 +98,21 @@ const Register = () => {
                   className=" px-10 pb-10 "
                 >
                   <div className="space-y-5 ">
-                    {/* for username */}
+                    {/* for Username */}
                     <div className="space-y-2 ">
-                      <label htmlFor="username" className="">
+                      <label htmlFor="Username" className="">
                         Name
                       </label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                         <input
                           type="text"
-                          name="username"
+                          name="Username"
                           placeholder="Ex: Rohan roy"
-                          id="username"
+                          id="Username"
                           required
                           autoComplete="off"
-                          value={user.username}
+                          value={User.Username}
                           onChange={handleInput}
                           className="black flex-1 border border-gray-300 
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -123,7 +123,7 @@ const Register = () => {
 
                     {/* for email */}
                     <div className="space-y-2">
-                      <label htmlFor="username">email</label>
+                      <label htmlFor="Username">email</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                         <input
@@ -133,7 +133,7 @@ const Register = () => {
                           id="email"
                           required
                           autoComplete="off"
-                          value={user.email}
+                          value={User.email}
                           onChange={handleInput}
                           className="black flex-1 border border-gray-300
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -144,7 +144,7 @@ const Register = () => {
 
                     {/* for phone number */}
                     <div className="space-y-2">
-                      <label htmlFor="username">phone</label>
+                      <label htmlFor="Username">phone</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                         <input
@@ -154,7 +154,7 @@ const Register = () => {
                           id="phone"
                           required
                           autoComplete="off"
-                          value={user.phone}
+                          value={User.phone}
                           onChange={handleInput}
                           className="black flex-1 border border-gray-300
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -165,7 +165,7 @@ const Register = () => {
 
                     {/* for password */}
                     <div className="space-y-2">
-                      <label htmlFor="username">password</label>
+                      <label htmlFor="Username">password</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                         <input
@@ -175,7 +175,7 @@ const Register = () => {
                           id="password"
                           required
                           autoComplete="off"
-                          value={user.password}
+                          value={User.password}
                           onChange={handleInput}
                           className="black flex-1 border border-gray-300
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "

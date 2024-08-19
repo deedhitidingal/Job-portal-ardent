@@ -13,11 +13,12 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen)
     }
 
-    const {user,isLoading,token}=useAuth()
+    const {User,isLoading,token}=useAuth()
   if (token && isLoading) {
     return <h1>Loading...</h1>;
   }
-  const {User,loginWithRedirect,isAuthenticated,logout}=  useAuth0();
+  const {user,loginWithRedirect,isAuthenticated,logout}=  useAuth0();
+  console.log("Current user",user)
   const {isLoggedIn}= useAuth()
   return (
     <div className='max-w-full container mx-auto xl:px-24 px-4 fixed top-0 w-full z-10 hover:shadow-md bg-slate-100 drop-shadow-xl'>
@@ -31,19 +32,19 @@ const Navbar = () => {
   <NavLink to="/current-jobs"><li>Current Jobs</li></NavLink>
   <NavLink to="/salary-estimate"><li>Salary Estimate</li></NavLink>
   {/* <NavLink to="/post-job"><li>Post job</li></NavLink> */}
-  {user?.isAdmin ? (
+  {User?.isAdmin ? (
     <NavLink className={(e) => e.isActive ? "red" : ""} to="/admin">
       <li className=''>Company Dashboard</li>
     </NavLink>
   ) : (
-    <NavLink className={(e) => e.isActive ? "red" : ""} to="/userdash">
+    <NavLink className={(e) => e.isActive ? "red" : ""} to="/Userdash">
       <li className=''>MY Dashboard</li>
     </NavLink>
   )}
 </ul>
 
         <div className='text-base font-medium space-x-5 hidden lg:block'>
-              {isLoggedIn || isAuthenticated ? <><Link to="/logout" onClick={(e)=>{logout()}} className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link>
+              {isLoggedIn || isAuthenticated ? <><span className='text-gray-500'>{user.name}</span><Link to="/logout" onClick={(e)=>{logout()}} className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link>
             <Link to="/registercard" className='py-2 px-5 border rounded text-white bg-blue-500'>Register</Link></>}
         </div>
 
@@ -62,11 +63,15 @@ const Navbar = () => {
           <NavLink to="/current-jobs"><li className='py-1'>Current Jobs</li></NavLink>
           <NavLink to="/salary-estimate"><li className='py-1'>Salary Estimate</li></NavLink>
           {/* <NavLink to="/post-job"><li>Post job</li></NavLink> */}
-          {user?.isAdmin && (
+          {User?.isAdmin && (
               <NavLink className={(e) => e.isActive ? "red" : ""} to="/admin"><li className='p-[20px]'>Company Dashboard</li></NavLink>
             )}
         <div className='flex py-4 gap-2'>
-        {isLoggedIn?<><Link to="/logout" className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<>
+        {isLoggedIn?<><img 
+        src={user.picture} 
+        alt={`${user.name}'s profile`} 
+        className="w-10 h-10 rounded-full"
+      /><span>{user.name}</span><Link to="/logout" className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<>
           <li><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link></li>
           <li><Link to="/registercard" className='py-2 px-5 border rounded bg-blue-400'>Sign up</Link></li>
         </>}

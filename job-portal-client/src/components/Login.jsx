@@ -11,10 +11,10 @@ import { faGoogle ,faGithub} from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
 
-  const { User, loginWithRedirect, isAuthenticated, logout } = useAuth0();
-  console.log("Current User", User);
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  console.log("Current User", user);
 
-  const [user, setuser] = useState({
+  const [User, setUser] = useState({
     email:"",
     password:"",
   })  
@@ -26,8 +26,8 @@ const Login = () => {
     let name=e.target.name
     let value=e.target.value
 
-    setuser({
-      ...user,
+    setUser({
+      ...User,
       [name]:value
     })
   }
@@ -39,7 +39,7 @@ const {storeTokenInLs}=useAuth();
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
-    console.log(user);
+    console.log(User);
 
     try {
       const loginURL= `${BASE_URL}/api/auth/login`;
@@ -48,7 +48,7 @@ const {storeTokenInLs}=useAuth();
         headers:{
           "Content-Type":"application/json"
         },
-        body:JSON.stringify(user),
+        body:JSON.stringify(User),
       });
       console.log(response);
 
@@ -84,7 +84,7 @@ const {storeTokenInLs}=useAuth();
               <div>
                 
                 {/* for email */}
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">email</label>
+                <label htmlFor="Username" className="block text-sm font-medium text-gray-700">email</label>
                 
                 <input
                   type="email"
@@ -93,13 +93,13 @@ const {storeTokenInLs}=useAuth();
                   id="email"
                   required
                   autoComplete="off"
-                  value={user.email}
+                  value={User.email}
                   onChange={handleInput}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
 
                 {/* for password */}
-                <label htmlFor="username">password</label>
+                <label htmlFor="Username">password</label>
                 <div>
                 <input
                   type={visible?"text":"password"}
@@ -108,7 +108,7 @@ const {storeTokenInLs}=useAuth();
                   id="password"
                   required
                   autoComplete="off"
-                  value={user.password}
+                  value={User.password}
                   onChange={handleInput}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
