@@ -4,6 +4,7 @@ import {Link, NavLink} from 'react-router-dom'
 import { FaBarsStaggered } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { useAuth } from '../store/Auth';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
   if (token && isLoading) {
     return <h1>Loading...</h1>;
   }
-
+  const {User,loginWithRedirect,isAuthenticated,logout}=  useAuth0();
   const {isLoggedIn}= useAuth()
   return (
     <div className='max-w-full container mx-auto xl:px-24 px-4 fixed top-0 w-full z-10 hover:shadow-md bg-slate-100 drop-shadow-xl'>
@@ -42,7 +43,7 @@ const Navbar = () => {
 </ul>
 
         <div className='text-base font-medium space-x-5 hidden lg:block'>
-              {isLoggedIn?<><Link to="/logout" className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link>
+              {isLoggedIn || isAuthenticated ? <><Link to="/logout" onClick={(e)=>{logout()}} className='py-2 px-5 border rounded text-white bg-blue-500'>Logout</Link></>:<><Link to="/login" className='py-2 px-5 border rounded'>Log in</Link>
             <Link to="/registercard" className='py-2 px-5 border rounded text-white bg-blue-500'>Register</Link></>}
         </div>
 
