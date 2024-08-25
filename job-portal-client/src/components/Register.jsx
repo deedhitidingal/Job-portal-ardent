@@ -5,39 +5,46 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useAuth } from "../store/Auth";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import { FaEye ,FaEyeSlash } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BASE_URL } from "../store/Helper";
+import { useAuth0 } from "@auth0/auth0-react";
+import Logout from "./Logout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle ,faGithub} from "@fortawesome/free-brands-svg-icons";
 
 const Register = () => {
-  const [user, setuser] = useState({
-    username: "",
+  const [User, setUser] = useState({
+    Username: "",
     email: "",
     phone: "",
     password: "",
   });
 
-  const [visible, setvisible] = useState(false)
+  const [visible, setvisible] = useState(false);
+
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  console.log("Current User", user);
 
   const handleInput = (e) => {
     console.log(e);
     let name = e.target.name;
     let value = e.target.value;
 
-    setuser({
-      ...user,
+    setUser({
+      ...User,
       [name]: value,
     });
   };
 
   // for navigator
-const navigate= useNavigate();
+  const navigate = useNavigate();
   // for call the Auth.jsx using useContext
-  const {storeTokenInLs}=useAuth();
+  const { storeTokenInLs } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    console.log(User);
 
     try {
       const registerURL = `${BASE_URL}/api/auth/register`;
@@ -46,20 +53,21 @@ const navigate= useNavigate();
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(User),
       });
-      const res_data= await response.json();
-        console.log("response data",res_data);
-       
-      if(response.ok){
-          //store in local storage
-          // localStorage.setItem("token",res_data.token)
-          toast.success("Registration successfully")
-          storeTokenInLs(res_data.token);
-          navigate("/")
+      const res_data = await response.json();
+      console.log("response data", res_data);
 
-      }else{
-        toast.error(res_data.extraDetails? res_data.extraDetails: res_data.message);
+      if (response.ok) {
+        //store in local storage
+        // localStorage.setItem("token",res_data.token)
+        toast.success("Registration successfully");
+        storeTokenInLs(res_data.token);
+        navigate("/");
+      } else {
+        toast.error(
+          res_data.extraDetails ? res_data.extraDetails : res_data.message
+        );
       }
       console.log(response);
     } catch (error) {
@@ -78,7 +86,7 @@ const navigate= useNavigate();
               </div>
 
               {/* for registration form */}
-              <div className="registration-form  bg-slate-200 mt-20   md:w-[30vw]  m-auto rounded-2xl shadow-2xl">
+              <div className="registration-form  bg-white mt-20   md:w-[30vw]  m-auto rounded-2xl shadow-2xl">
                 <h1 className="main-heading text-center text-3xl font-bold text-blue-600  pt-10 pb-5">
                   Registration form
                 </h1>
@@ -90,25 +98,23 @@ const navigate= useNavigate();
                   className=" px-10 pb-10 "
                 >
                   <div className="space-y-5 ">
-                    {/* for username */}
+                    {/* for Username */}
                     <div className="space-y-2 ">
-                      <label htmlFor="username" className="">
+                      <label htmlFor="Username" className="">
                         Name
                       </label>
                       <br />
-                      <div
-                        className="flex rounded  hover:ring-1   w-full"
-                      >
+                      <div className="flex rounded  hover:ring-1   w-full">
                         <input
                           type="text"
-                          name="username"
+                          name="Username"
                           placeholder="Ex: Rohan roy"
-                          id="username"
+                          id="Username"
                           required
                           autoComplete="off"
-                          value={user.username}
+                          value={User.Username}
                           onChange={handleInput}
-                          className="black flex-1 border-0 
+                          className="black flex-1 border border-gray-300 
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
                         />
                         <FaUser className="absolute mt-2.5 ml-2 text-gray-400 " />
@@ -117,67 +123,72 @@ const navigate= useNavigate();
 
                     {/* for email */}
                     <div className="space-y-2">
-                      <label htmlFor="username">email</label>
+                      <label htmlFor="Username">email</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="Ex: rohan123@gmail.com"
-                        id="email"
-                        required
-                        autoComplete="off"
-                        value={user.email}
-                        onChange={handleInput}
-                        className="black flex-1 border-0 
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Ex: rohan123@gmail.com"
+                          id="email"
+                          required
+                          autoComplete="off"
+                          value={User.email}
+                          onChange={handleInput}
+                          className="black flex-1 border border-gray-300
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
-                      />
-                      <MdEmail className="absolute mt-2.5 ml-2 text-gray-400 "/>
+                        />
+                        <MdEmail className="absolute mt-2.5 ml-2 text-gray-400 " />
                       </div>
                     </div>
 
                     {/* for phone number */}
                     <div className="space-y-2">
-                      <label htmlFor="username">phone</label>
+                      <label htmlFor="Username">phone</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
-                      <input
-                        type="number"
-                        name="phone"
-                        placeholder="phone"
-                        id="phone"
-                        required
-                        autoComplete="off"
-                        value={user.phone}
-                        onChange={handleInput}
-                        className="black flex-1 border-0 
+                        <input
+                          type="number"
+                          name="phone"
+                          placeholder="phone"
+                          id="phone"
+                          required
+                          autoComplete="off"
+                          value={User.phone}
+                          onChange={handleInput}
+                          className="black flex-1 border border-gray-300
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
-                      />
-                      <FaPhoneAlt className="absolute mt-2.5 ml-2 text-gray-400 "/>
+                        />
+                        <FaPhoneAlt className="absolute mt-2.5 ml-2 text-gray-400 " />
                       </div>
                     </div>
 
                     {/* for password */}
                     <div className="space-y-2">
-                      <label htmlFor="username">password</label>
+                      <label htmlFor="Username">password</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
-                      <input
-                        type={visible? "text": "password"}
-                        name="password"
-                        placeholder="password"
-                        id="password"
-                        required
-                        autoComplete="off"
-                        value={user.password}
-                        onChange={handleInput}
-                        className="black flex-1 border-0 
+                        <input
+                          type={visible ? "text" : "password"}
+                          name="password"
+                          placeholder="password"
+                          id="password"
+                          required
+                          autoComplete="off"
+                          value={User.password}
+                          onChange={handleInput}
+                          className="black flex-1 border border-gray-300
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
-                      />
-                      <RiLockPasswordFill className="absolute mt-2.5 ml-2 text-gray-400 "/>
-                      <div className=" mt-2.5 ml-2 text-gray-600 " onClick={()=>{setvisible(!visible)}}>
-                          {visible? <FaEye />:<FaEyeSlash />}
-                      </div>
+                        />
+                        <RiLockPasswordFill className="absolute mt-2.5 ml-2 text-gray-400 " />
+                        <div
+                          className=" mt-2.5 ml-2 text-gray-600 "
+                          onClick={() => {
+                            setvisible(!visible);
+                          }}
+                        >
+                          {visible ? <FaEye /> : <FaEyeSlash />}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -185,11 +196,37 @@ const navigate= useNavigate();
                   <div className="text-center">
                     <button
                       type="submit"
-                      className="btn btn-submit m-auto bg-blue-800  py-2 mt-5 font-bold w-full rounded-md text-white"
+                      className="btn btn-submit m-auto bg-blue-800  py-3 mt-5 font-bold w-full rounded-md text-white mb-2"
                     >
                       Register now
                     </button>
                   </div>
+                  {isAuthenticated ? (
+                    <button
+                      onClick={(e) => {
+                        logout();
+                      }}
+                    >
+                      logout
+                    </button>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        loginWithRedirect();
+                      }}
+                      className="flex items-center justify-center w-full p-3 rounded-md border border-gray-300 bg-white hover:bg-gray-100   focus:outline-none "
+                    >
+                      <div className=" flex space-x-2 items-center">
+
+                      <FontAwesomeIcon icon={faGoogle} />
+
+                      <FontAwesomeIcon icon={faGithub} />
+                      <span className="text-black font-medium">
+                        Continue with Google or Github
+                      </span>
+                      </div>
+                    </button>
+                  )}
                 </form>
               </div>
             </div>

@@ -8,7 +8,7 @@
 // import { FaEye ,FaEyeSlash } from "react-icons/fa";
 
 // const HirerRegister = () => {
-//     const [user, setuser] = useState({
+//     const [User, setUser] = useState({
 //         name: "",
 //         email: "",
 //         phone:"",
@@ -20,8 +20,8 @@
 //         let name = e.target.name;
 //         let value = e.target.value;
     
-//         setuser({
-//           ...user,
+//         setUser({
+//           ...User,
 //           [name]: value,
 //         });
 //       };
@@ -33,7 +33,7 @@
 
 //       const handleSubmit = async (e) => {
 //         e.preventDefault();
-//         console.log(user);
+//         console.log(User);
     
 //         try {
 //           const registerURL = "http://127.0.0.5:3000/api/auth/register";
@@ -42,7 +42,7 @@
 //             headers: {
 //               "Content-Type": "application/json",
 //             },
-//             body: JSON.stringify(user),
+//             body: JSON.stringify(User),
 //           });
 //           const res_data= await response.json();
 //             console.log("response data",res_data);
@@ -96,7 +96,7 @@
 //                           id="name"
 //                           required
 //                           autoComplete="off"
-//                           value={user.name}
+//                           value={User.name}
 //                           onChange={handleInput}
 //                           className="black flex-1 border-0 
 //                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -117,7 +117,7 @@
 //                         id="email"
 //                         required
 //                         autoComplete="off"
-//                         value={user.email}
+//                         value={User.email}
 //                         onChange={handleInput}
 //                         className="black flex-1 border-0 
 //                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -139,7 +139,7 @@
 //                         id="password"
 //                         required
 //                         autoComplete="off"
-//                         value={user.password}
+//                         value={User.password}
 //                         onChange={handleInput}
 //                         className="black flex-1 border-0 
 //                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -183,8 +183,8 @@ import { BASE_URL } from '../store/Helper';
 
 
 const HirerRegister = () => {
-  const [user, setuser] = useState({
-    username: "",
+  const [User, setUser] = useState({
+    Username: "",
     email: "",
     phone: "",
     password: "",
@@ -197,8 +197,8 @@ const HirerRegister = () => {
     let name = e.target.name;
     let value = e.target.value;
 
-    setuser({
-      ...user,
+    setUser({
+      ...User,
       [name]: value,
     });
   };
@@ -210,7 +210,7 @@ const navigate= useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    console.log(User);
 
     try {
       const registerURL = `${BASE_URL}/api/auth/register`;
@@ -219,7 +219,7 @@ const navigate= useNavigate();
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(User),
       });
       const res_data= await response.json();
         console.log("response data",res_data);
@@ -262,9 +262,9 @@ const navigate= useNavigate();
                   className=" px-10 pb-10 "
                 >
                   <div className="space-y-5 ">
-                    {/* for username */}
+                    {/* for Username */}
                     <div className="space-y-2 ">
-                      <label htmlFor="username" className="">
+                      <label htmlFor="Username" className="">
                        Company Name
                       </label>
                       <br />
@@ -273,12 +273,12 @@ const navigate= useNavigate();
                       >
                         <input
                           type="text"
-                          name="username"
+                          name="Username"
                           placeholder="XYZ"
-                          id="username"
+                          id="Username"
                           required
                           autoComplete="off"
-                          value={user.username}
+                          value={User.Username}
                           onChange={handleInput}
                           className="black flex-1 border-0 
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -289,7 +289,7 @@ const navigate= useNavigate();
 
                     {/* for email */}
                     <div className="space-y-2">
-                      <label htmlFor="username">email</label>
+                      <label htmlFor="Username">email</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                       <input
@@ -299,7 +299,7 @@ const navigate= useNavigate();
                         id="email"
                         required
                         autoComplete="off"
-                        value={user.email}
+                        value={User.email}
                         onChange={handleInput}
                         className="black flex-1 border-0 
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -310,7 +310,7 @@ const navigate= useNavigate();
 
                     {/* for phone number */}
                     <div className="space-y-2">
-                      <label htmlFor="username">phone</label>
+                      <label htmlFor="Username">phone</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                       <input
@@ -320,7 +320,7 @@ const navigate= useNavigate();
                         id="phone"
                         required
                         autoComplete="off"
-                        value={user.phone}
+                        value={User.phone}
                         onChange={handleInput}
                         className="black flex-1 border-0 
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -331,7 +331,7 @@ const navigate= useNavigate();
 
                     {/* for password */}
                     <div className="space-y-2">
-                      <label htmlFor="username">password</label>
+                      <label htmlFor="Username">password</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                       <input
@@ -341,7 +341,7 @@ const navigate= useNavigate();
                         id="password"
                         required
                         autoComplete="off"
-                        value={user.password}
+                        value={User.password}
                         onChange={handleInput}
                         className="black flex-1 border-0 
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
