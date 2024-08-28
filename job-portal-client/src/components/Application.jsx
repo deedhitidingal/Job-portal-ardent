@@ -19,8 +19,11 @@ const Application = () => {
     };
 
     return (
-        <div className="bg-gray-200 p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-20">Job Application</h2>
+        <div className="bg-gray-200 p-32 rounded-lg shadow-md ">
+            <div className='text-center'>
+
+            <h2 className="text-2xl font-bold mb-10">Apply for this job</h2>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -72,7 +75,8 @@ const Application = () => {
                         <label htmlFor="jobRole" className="block text-gray-700 text-sm font-bold mb-2">
                             Job Role
                         </label>
-                        <select
+                        <input type="text" id='jobRole' className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'/>
+                        {/* <select
                             id="jobRole"
                             {...register('jobRole', { required: true })}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -81,7 +85,7 @@ const Application = () => {
                             <option value="Software Engineer">Software Engineer</option>
                             <option value="Data Scientist">Data Scientist</option>
                             <option value="Project Manager">Project Manager</option>
-                        </select>
+                        </select> */}
                         {errors.jobRole && (
                             <p className="text-red-500 text-xs mt-1">Job Role is required</p>
                         )}
