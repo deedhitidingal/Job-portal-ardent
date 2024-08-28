@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { MdEdit } from "react-icons/md";
-
-{/* <CiCirclePlus className='relative items-center text-center text-6xl justify-center ' /> */}
-{/* <MdEdit /> */}
+import { VscThreeBars } from "react-icons/vsc";
+{
+  /* <CiCirclePlus className='relative items-center text-center text-6xl justify-center ' /> */
+}
+{
+  /* <MdEdit /> */
+}
 function User_dash() {
     return (
         <div className="flex h-screen ">
@@ -35,13 +39,11 @@ function User_dash() {
                     </nav>
                 </div>
             </aside>
-            <main className="w-3/4 p-8 bg-white pt-32">
+            <main className="w-3/4 p-8 bg-white pt-40">
                 <div>
-                    <h2 className="text-2xl font-bold ">Dashboard</h2>
+                    <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
                     <div>
-                    <div className="bg-gray-400 h-24 w-24 rounded-full mx-auto ml-0"></div>
-                     <CiCirclePlus className='relative items-center text-center text-6xl justify-center ' /> 
-                      <MdEdit /> 
+                    <div className="bg-gray-400 h-24 w-24 rounded-full mx-auto"></div>
                     <p className="mt-4">PROFILE NAME</p>
                     </div>
                     <div className="flex">
