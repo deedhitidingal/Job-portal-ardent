@@ -75,7 +75,7 @@ function Job_details() {
       <div className="flex gap-6">
         <div className="flex items-center">
   
-          <div className="pt-2 pb-2 pl-4 pr-4 items-center justify-center  rounded-lg border border-gray-300 bg-white   focus:outline-none bg-orange-500 ">
+          <div className="pt-2 pb-2 pl-4 pr-4 items-center justify-center  rounded-lg border border-gray-300   focus:outline-none bg-orange-500 ">
 
           <p className=" text-sm text-white">{job.experienceLevel}</p>
           </div>
