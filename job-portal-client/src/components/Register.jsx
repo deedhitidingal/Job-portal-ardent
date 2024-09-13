@@ -11,35 +11,31 @@ import { BASE_URL } from "../store/Helper";
 import { useAuth0 } from "@auth0/auth0-react";
 import Logout from "./Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle ,faGithub} from "@fortawesome/free-brands-svg-icons";
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const Register = () => {
   const [User, setUser] = useState({
-    Username: "",
+    username: "", // Change this to lowercase
     email: "",
     phone: "",
     password: "",
   });
 
   const [visible, setvisible] = useState(false);
-
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   console.log("Current User", user);
 
   const handleInput = (e) => {
-    console.log(e);
     let name = e.target.name;
     let value = e.target.value;
 
     setUser({
       ...User,
-      [name]: value,
+      [name]: value, // Handle all inputs generically
     });
   };
 
-  // for navigator
   const navigate = useNavigate();
-  // for call the Auth.jsx using useContext
   const { storeTokenInLs } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -53,15 +49,14 @@ const Register = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(User),
+        body: JSON.stringify(User), // Send corrected User object
       });
+
       const res_data = await response.json();
       console.log("response data", res_data);
 
       if (response.ok) {
-        //store in local storage
-        // localStorage.setItem("token",res_data.token)
-        toast.success("Registration successfully");
+        toast.success("Registration successful!");
         storeTokenInLs(res_data.token);
         navigate("/");
       } else {
@@ -74,6 +69,7 @@ const Register = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       <section className="bg-slate-100 h-screen mt-10">
@@ -86,36 +82,28 @@ const Register = () => {
               </div>
 
               {/* for registration form */}
-              <div className="registration-form  bg-white mt-20   md:w-[30vw]  m-auto rounded-2xl shadow-2xl">
-                <h1 className="main-heading text-center text-3xl font-bold text-blue-600  pt-10 pb-5">
+              <div className="registration-form bg-white mt-20 md:w-[30vw] m-auto rounded-2xl shadow-2xl">
+                <h1 className="main-heading text-center text-3xl font-bold text-blue-600 pt-10 pb-5">
                   Registration form
                 </h1>
                 <br />
-
-                <form
-                  action=""
-                  onSubmit={handleSubmit}
-                  className=" px-10 pb-10 "
-                >
+                <form onSubmit={handleSubmit} className="px-10 pb-10 ">
                   <div className="space-y-5 ">
-                    {/* for Username */}
+                    {/* for username */}
                     <div className="space-y-2 ">
-                      <label htmlFor="Username" className="">
-                        Name
-                      </label>
+                      <label htmlFor="username">Name</label>
                       <br />
-                      <div className="flex rounded  hover:ring-1   w-full">
+                      <div className="flex rounded hover:ring-1 w-full">
                         <input
                           type="text"
-                          name="Username"
-                          placeholder="Ex: Rohan roy"
-                          id="Username"
+                          name="username" // Change to lowercase
+                          placeholder="Ex: Rohan Roy"
+                          id="username" // Change to lowercase
                           required
                           autoComplete="off"
-                          value={User.Username}
+                          value={User.username} // Change to lowercase
                           onChange={handleInput}
-                          className="black flex-1 border border-gray-300 
-                      py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                          className="black flex-1 border border-gray-300 py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
                         />
                         <FaUser className="absolute mt-2.5 ml-2 text-gray-400 " />
                       </div>
@@ -123,9 +111,9 @@ const Register = () => {
 
                     {/* for email */}
                     <div className="space-y-2">
-                      <label htmlFor="Username">email</label>
+                      <label htmlFor="email">Email</label>
                       <br />
-                      <div className="flex rounded  hover:ring-1   w-full">
+                      <div className="flex rounded hover:ring-1 w-full">
                         <input
                           type="email"
                           name="email"
@@ -135,8 +123,7 @@ const Register = () => {
                           autoComplete="off"
                           value={User.email}
                           onChange={handleInput}
-                          className="black flex-1 border border-gray-300
-                      py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                          className="black flex-1 border border-gray-300 py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
                         />
                         <MdEmail className="absolute mt-2.5 ml-2 text-gray-400 " />
                       </div>
@@ -144,20 +131,19 @@ const Register = () => {
 
                     {/* for phone number */}
                     <div className="space-y-2">
-                      <label htmlFor="Username">phone</label>
+                      <label htmlFor="phone">Phone</label>
                       <br />
-                      <div className="flex rounded  hover:ring-1   w-full">
+                      <div className="flex rounded hover:ring-1 w-full">
                         <input
                           type="number"
                           name="phone"
-                          placeholder="phone"
+                          placeholder="Phone"
                           id="phone"
                           required
                           autoComplete="off"
                           value={User.phone}
                           onChange={handleInput}
-                          className="black flex-1 border border-gray-300
-                      py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                          className="black flex-1 border border-gray-300 py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
                         />
                         <FaPhoneAlt className="absolute mt-2.5 ml-2 text-gray-400 " />
                       </div>
@@ -165,24 +151,23 @@ const Register = () => {
 
                     {/* for password */}
                     <div className="space-y-2">
-                      <label htmlFor="Username">password</label>
+                      <label htmlFor="password">Password</label>
                       <br />
-                      <div className="flex rounded  hover:ring-1   w-full">
+                      <div className="flex rounded hover:ring-1 w-full">
                         <input
                           type={visible ? "text" : "password"}
                           name="password"
-                          placeholder="password"
+                          placeholder="Password"
                           id="password"
                           required
                           autoComplete="off"
                           value={User.password}
                           onChange={handleInput}
-                          className="black flex-1 border border-gray-300
-                      py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
+                          className="black flex-1 border border-gray-300 py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6"
                         />
                         <RiLockPasswordFill className="absolute mt-2.5 ml-2 text-gray-400 " />
                         <div
-                          className=" mt-2.5 ml-2 text-gray-600 "
+                          className="mt-2.5 ml-2 text-gray-600"
                           onClick={() => {
                             setvisible(!visible);
                           }}
@@ -196,34 +181,24 @@ const Register = () => {
                   <div className="text-center">
                     <button
                       type="submit"
-                      className="btn btn-submit m-auto bg-blue-800  py-3 mt-5 font-bold w-full rounded-md text-white mb-2"
+                      className="btn btn-submit m-auto bg-blue-800 py-3 mt-5 font-bold w-full rounded-md text-white mb-2"
                     >
                       Register now
                     </button>
                   </div>
                   {isAuthenticated ? (
-                    <button
-                      onClick={(e) => {
-                        logout();
-                      }}
-                    >
-                      logout
-                    </button>
+                    <button onClick={() => logout()}>Logout</button>
                   ) : (
                     <button
-                      onClick={(e) => {
-                        loginWithRedirect();
-                      }}
-                      className="flex items-center justify-center w-full p-3 rounded-md border border-gray-300 bg-white hover:bg-gray-100   focus:outline-none "
+                      onClick={() => loginWithRedirect()}
+                      className="flex items-center justify-center w-full p-3 rounded-md border border-gray-300 bg-white hover:bg-gray-100 focus:outline-none"
                     >
-                      <div className=" flex space-x-2 items-center">
-
-                      <FontAwesomeIcon icon={faGoogle} />
-
-                      <FontAwesomeIcon icon={faGithub} />
-                      <span className="text-black font-medium">
-                        Continue with Google or Github
-                      </span>
+                      <div className="flex space-x-2 items-center">
+                        <FontAwesomeIcon icon={faGoogle} />
+                        <FontAwesomeIcon icon={faGithub} />
+                        <span className="text-black font-medium">
+                          Continue with Google or Github
+                        </span>
                       </div>
                     </button>
                   )}

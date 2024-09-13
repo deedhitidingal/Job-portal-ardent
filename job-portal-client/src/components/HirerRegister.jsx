@@ -184,7 +184,7 @@ import { BASE_URL } from '../store/Helper';
 
 const HirerRegister = () => {
   const [User, setUser] = useState({
-    Username: "",
+    username: "",
     email: "",
     phone: "",
     password: "",
@@ -262,9 +262,9 @@ const navigate= useNavigate();
                   className=" px-10 pb-10 "
                 >
                   <div className="space-y-5 ">
-                    {/* for Username */}
+                    {/* for username */}
                     <div className="space-y-2 ">
-                      <label htmlFor="Username" className="">
+                      <label htmlFor="username" className="">
                        Company Name
                       </label>
                       <br />
@@ -273,12 +273,12 @@ const navigate= useNavigate();
                       >
                         <input
                           type="text"
-                          name="Username"
+                          name="username"
                           placeholder="XYZ"
-                          id="Username"
+                          id="username"
                           required
                           autoComplete="off"
-                          value={User.Username}
+                          value={User.username}
                           onChange={handleInput}
                           className="black flex-1 border-0 
                       py-1.5 pl-8 text-gray-900 placeholder:text-gray-400 focus:outline-none rounded-md sm:text-sm sm:leading-6 "
@@ -289,7 +289,7 @@ const navigate= useNavigate();
 
                     {/* for email */}
                     <div className="space-y-2">
-                      <label htmlFor="Username">email</label>
+                      <label htmlFor="username">email</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                       <input
@@ -310,7 +310,7 @@ const navigate= useNavigate();
 
                     {/* for phone number */}
                     <div className="space-y-2">
-                      <label htmlFor="Username">phone</label>
+                      <label htmlFor="username">phone</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                       <input
@@ -331,7 +331,7 @@ const navigate= useNavigate();
 
                     {/* for password */}
                     <div className="space-y-2">
-                      <label htmlFor="Username">password</label>
+                      <label htmlFor="username">password</label>
                       <br />
                       <div className="flex rounded  hover:ring-1   w-full">
                       <input
