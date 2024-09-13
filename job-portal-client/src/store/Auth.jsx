@@ -1,74 +1,86 @@
-import { createContext, useContext,useState,useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { BASE_URL } from "./Helper";
 
-export const AuthContext=createContext();
+export const AuthContext = createContext();
 
-export const AuthProvider=({children})=>{
-    const [token, settoken] = useState(localStorage.getItem("token"))
-    const [User, setUser] = useState("")
-    const [isLoading, setisLoading] = useState(true)
-    const UserAuthorization= `Bearer ${token}`;
+export const AuthProvider = ({ children }) => {
+    const [token, setToken] = useState(localStorage.getItem("token"));
+    const [User, setUser] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+    const userAuthorization = `Bearer ${token}`;
 
-    const storeTokenInLs=(serverToken)=>{
-        settoken(serverToken)
-        return localStorage.setItem("token",serverToken);
+    // Store token in localStorage
+    const storeTokenInLs = (serverToken) => {
+        setToken(serverToken);
+        localStorage.setItem("token", serverToken);
     };
-// for User log out
-    const LogOutUser=()=>{
-        settoken("")
-        setUser("")
-        return localStorage.removeItem("token")
-    }
-//it check the token is present or not
-    let isLoggedIn=!!token;
-    console.log("logedin",isLoggedIn)
 
-    //JWT Authentication- to get the currently loggedIn User data
-    const UserAuthentication= async()=>{
-        //added to solve the refreshing admin tab problem in navbar 
+    // Log out the user and clear token and user data
+    const logOutUser = () => {
+        setToken("");
+        setUser("");
+        localStorage.removeItem("token");
+    };
+
+    // Check if a token is present
+    const isLoggedIn = !!token;
+    console.log("loggedIn", isLoggedIn);
+
+    // Fetch the current logged-in user's data using JWT authentication
+    const userAuthentication = async () => {
+        // Skip if no token is available
         if (!token) {
-            setisLoading(false);
+            setIsLoading(false);
             return;
-          }
-        try {
-            setisLoading(true)
-            const response= await fetch(`${BASE_URL}/api/auth/User`,{
-                method:"GET",
-                headers:{
-                    Authorization: UserAuthorization,
-                }
-            })
-
-            if(response.ok){
-                const data= await response.json();
-                console.log("User data",data.UserData);
-                setUser(data.UserData);
-                // setisLoading(false)
-            }
-            // else{
-            //     console.log("error while fetching response!")
-            //     setisLoading(false)
-            // }
-        } catch (error) {
-            console.log("Error to fetching User data");
         }
-    }
+
+        try {
+            setIsLoading(true);
+            const response = await fetch(`${BASE_URL}/api/auth/User`, {
+                method: "GET",
+                headers: {
+                    Authorization: userAuthorization,
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Full response data", data);
+
+                // Correct the check for the user data
+                if (data && data.userData) {
+                    setUser(data.userData);  // Update based on the actual field name
+                    console.log("User data", data.userData);
+                } else {
+                    console.log("User data not found in response");
+                }
+            } else {
+                console.log("Error fetching user data, status:", response.status);
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
-    UserAuthentication();
-    }, [token])
+        userAuthentication();
+    }, [token]);
 
     return (
-        <AuthContext.Provider value={{User,isLoggedIn,LogOutUser,storeTokenInLs, UserAuthorization,isLoading}}>
+        <AuthContext.Provider
+            value={{ User, isLoggedIn, logOutUser, storeTokenInLs, userAuthorization, isLoading }}
+        >
             {children}
         </AuthContext.Provider>
     );
 };
 
-export const useAuth=()=>{
-    const authContextValue=useContext(AuthContext);
-    if(!authContextValue){
-        throw new Error("useAuth used outside of the Provider");
+export const useAuth = () => {
+    const authContextValue = useContext(AuthContext);
+    if (!authContextValue) {
+        throw new Error("useAuth must be used within an AuthProvider");
     }
     return authContextValue;
-}
+};
